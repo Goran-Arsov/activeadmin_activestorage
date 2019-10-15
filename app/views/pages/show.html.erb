@@ -6,6 +6,12 @@
 </p>
 
 <p>
+<% if @page.cover_image.present? %>
+  <%= image_tag(@page.cover_image, style: 'width:20%') %>
+<% end %>
+</p>
+
+<p>
   <strong>Body:</strong>
   <%= @page.body %>
 </p>

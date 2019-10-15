@@ -41,7 +41,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
   def update
-    @user.id = current_user.id
+    @page.user = current_user
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
@@ -71,6 +71,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :body, :user_id)
+      # debugger
+      params.require(:page).permit(:title, :body, :user_id, :cover_image, uploads:[])
     end
 end
