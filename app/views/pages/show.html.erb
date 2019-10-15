@@ -7,14 +7,23 @@
 
 <p>
 <% if @page.cover_image.present? %>
+  <h5>Cover image:</h3>
   <%= image_tag(@page.cover_image, style: 'width:20%') %>
 <% end %>
 </p>
 
 <p>
   <strong>Body:</strong>
-  <%= @page.body %>
+  <p><%= @page.body %></p>
 </p>
 
+<div>
+  <% @page.uploads.each do |upload| %>
+    <h5>An upload:</h3>
+    <%= link_to image_tag(upload, width:360), upload %>
+  <% end %>
+</div>
+
+<br />
 <%= link_to 'Edit', edit_page_path(@page) %> |
 <%= link_to 'Back', pages_path %>
